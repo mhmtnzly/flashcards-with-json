@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from game_screen import Ui_MainWindow
+from login import Ui_loginwindow
 
 class Ui_menu_window(object):
     def setupUi(self, menu_window):
@@ -157,6 +158,22 @@ class Ui_menu_window(object):
         self.which_user_label.setText(_translate("menu_window", "Welkom  "))
         self.quit.setText(_translate("menu_window", "Quit"))
 
+
+
+        self.play.clicked.connect(self.Play)
+        self.quit_2.clicked.connect(self.LogOut)
+        self.quit.clicked.connect(self.Quit)
+
+    def Play(self):
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(menu_window)
+    
+    def LogOut(self):
+        self.ui = Ui_loginwindow()
+        self.ui.setupUi(menu_window)
+
+    def Quit(self):
+        quit()
 
 if __name__ == "__main__":
     import sys
