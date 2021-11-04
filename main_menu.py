@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_menu_window(object):
     def setupUi(self, menu_window):
         menu_window.setObjectName("menu_window")
