@@ -43,3 +43,11 @@ class user:
         sec=timedelta(seconds=self.time)
         d=datetime(1,1,1)+sec
         return "%d:%d:%d:%d" % (d.day-1, d.hour, d.minute, d.second)
+    
+    def display(self):
+        print("User: ", self.username)
+        print("Level: ", self.progress)
+        print("Total Time: ", self.time)
+
+u = user("halit")
+u.display()
