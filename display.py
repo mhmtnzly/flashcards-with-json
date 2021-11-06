@@ -75,13 +75,18 @@ class Ui_loginwindow(object):
     
         self.credentials.clicked.connect(self.credentials_) #credential button 
         self.login_button.clicked.connect(self.menu_screen_)
+
     
+
     def get_username(self):
         get_username=self.username_edit.text()
-        print(get_username)
+        return get_username
+
 
     def menu_screen_(self):
-        self.get_username()
+        user1.username=self.get_username()
+        
+        QtWidgets.QLineEdit(self.username_edit.text())
         self.ui=Ui_menu_window()
         self.ui.setupUi(window)
     
@@ -216,7 +221,7 @@ class Ui_menu_window(object):
         font.setStrikeOut(False)
         self.which_user.setFont(font)
         self.which_user.setStyleSheet("background-color: rgba(255, 255, 255, 10);")
-        self.which_user.setText('') #Fill with User name
+        
         self.which_user.setObjectName("which_user")
         self.progress_label = QtWidgets.QLabel(self.groupBox)
         self.progress_label.setGeometry(QtCore.QRect(40, 100, 140, 40))
@@ -255,14 +260,13 @@ class Ui_menu_window(object):
         self.progress_label_5.setStyleSheet("background-color: rgb(255, 255, 255,10);")
         self.progress_label_5.setObjectName("progress_label_5")
         self.total_time_show = QtWidgets.QLabel(self.groupBox)
-        self.total_time_show.setGeometry(QtCore.QRect(190, 280, 141, 40))
+        self.total_time_show.setGeometry(QtCore.QRect(190, 280, 350, 40))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
         self.total_time_show.setFont(font)
         self.total_time_show.setStyleSheet("background-color: rgb(255, 255, 255,10);")
-        self.total_time_show.setText("")
         self.total_time_show.setObjectName("total_time_show")
         self.play = QtWidgets.QPushButton(self.groupBox)
         self.play.setGeometry(QtCore.QRect(75, 430, 100, 40))
@@ -309,7 +313,7 @@ class Ui_menu_window(object):
         font.setWeight(75)
         self.level.setFont(font)
         self.level.setStyleSheet("background-color: rgb(255, 255, 255,10);")
-        self.level.setText("")
+        
         self.level.setObjectName("level")
         self.words_counter = QtWidgets.QLabel(self.groupBox)
         self.words_counter.setGeometry(QtCore.QRect(360, 190, 61, 40))
@@ -335,6 +339,16 @@ class Ui_menu_window(object):
 
         self.retranslateUi(menu_window)
         QtCore.QMetaObject.connectSlotsByName(menu_window)
+        username_=user1.username
+        user2=user.User(username_)
+        user2.save_progress()
+        self.which_user.setText(user2.username)
+        self.total_time_show.setText(user2.time_())
+        self.level.setText(str(user2.progress))
+        
+        self.progress.setValue(((user2.progress*20)/5000)*100)
+
+
 
     def retranslateUi(self, menu_window):
         _translate = QtCore.QCoreApplication.translate
@@ -351,6 +365,7 @@ class Ui_menu_window(object):
         self.quit.clicked.connect(QCoreApplication.instance().quit)
         self.play.clicked.connect(self.game_screen_go)
 
+        
         
 
     def login_go_back(self): #Login menu function
@@ -470,6 +485,8 @@ class Ui_gamescreen(object):
         self.ui.setupUi(window)
 if __name__ == "__main__":
     import sys
+    import user
+    user1=user.User()
     app = QtWidgets.QApplication(sys.argv)
     window = QtWidgets.QMainWindow()
     ui = Ui_loginwindow()
