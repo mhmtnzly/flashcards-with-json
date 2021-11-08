@@ -2,8 +2,8 @@ import time
 import os
 import json
 from datetime import datetime, timedelta
-class user:
-    def __init__(self,username,time=0,progress=1):
+class User:
+    def __init__(self,username=" ",time=0,progress=0):
         self.login(username,time,progress)
 
     def login(self,name,time,progress):
@@ -42,4 +42,9 @@ class user:
     def time_(self):
         sec=timedelta(seconds=self.time)
         d=datetime(1,1,1)+sec
-        return "%d:%d:%d:%d" % (d.day-1, d.hour, d.minute, d.second)
+        total_= str("%d day:%d hour:%d min:%d sec" % (d.day-1, d.hour, d.minute, d.second))
+        return total_
+    def display(self):
+        print("User: ",self.username)
+        print("Level: ",self.progress)
+        print("Total Time: ",self.time)
