@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 class User:
     def __init__(self,username=" ",time=0,progress=0):
         self.login(username,time,progress)
-
     def login(self,name,time,progress):
         self.start_time()
         os.chdir('users')
@@ -44,7 +43,5 @@ class User:
         d=datetime(1,1,1)+sec
         total_= str("%d day:%d hour:%d min:%d sec" % (d.day-1, d.hour, d.minute, d.second))
         return total_
-    def display(self):
-        print("User: ",self.username)
-        print("Level: ",self.progress)
-        print("Total Time: ",self.time)
+    def level_up(self):
+        self.progress+=1
