@@ -352,14 +352,14 @@ class Ui_menu_window(object):
 
 
 
-        self.quit_2.clicked.connect(self.login_go_back)#Login page button
-        self.quit.clicked.connect(QCoreApplication.instance().quit)
-        self.play.clicked.connect(self.game_screen_go)
+        self.quit_2.clicked.connect(self.login_go_back)#Login Page button
+        self.quit.clicked.connect(QCoreApplication.instance().quit)#Quit button
+        self.play.clicked.connect(self.game_screen_go)#Game Screen Page button
 
-    def login_go_back(self): #Login menu function
+    def login_go_back(self): #Login menu Function
         self.ui=Ui_loginwindow()
         self.ui.setupUi(window)
-    def game_screen_go(self):
+    def game_screen_go(self):#Game Screen Function
         self.ui=Ui_gamescreen()
         self.ui.setupUi(window)
 
@@ -556,13 +556,14 @@ class Ui_gamescreen(QtWidgets.QMainWindow):
         user1.log_out()
         self.ui=Ui_menu_window()
         self.ui.setupUi(window)
-    def true_button_(self):
+    def true_button_(self): #Pressing the True button increases the known word and deletes the word in the '0' index.
         if self.start == False:
             self.game1.progress(True)
             self.twenty.setText(str(self.game1.known_words))
             self.known_word.setText(str(self.game1.total_words))
             self.time_improve()
-    def false_button_(self):
+    def false_button_(self):#Pressing the False button increases the known word and deletes
+                            #the word in the '0' index and adds it to the end.
         if self.start == False:
             self.game1.progress(False)
             self.twenty.setText(str(self.game1.known_words))
