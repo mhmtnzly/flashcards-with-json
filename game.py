@@ -24,10 +24,10 @@ class Game:
                 f.write(r.content)
         else:
             os.chdir("..")   
-    def flashcard(self):
-        return [self.dutch[0],self.glossary1[self.dutch[0]]]
-    def progress(self, choice):
-        if choice:
+    def flashcard(self):                                    #In the begin function we reach the words by making list and dictionary.In this function we are returning the flashcards by using that list and the dictionary.
+        return [self.dutch[0],self.glossary1[self.dutch[0]]]#And we always returning the first indexes by using pop function in the true_button and false_button function.
+    def progress(self, choice):#In this function we are using the information that is provided in true_button and false_button function.This information includes the number of the known words and the total words.We're  
+        if choice:             # simply returning those values.
             self.true_button_()
         else: 
             self.false_button_()
